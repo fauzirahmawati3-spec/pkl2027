@@ -1,331 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to CodeIgniter 4!</title>
-    <meta name="description" content="The small framework with powerful features">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-
-    <!-- STYLES -->
-
-    <style {csp-style-nonce}>
-        * {
-            transition: background-color 300ms ease, color 300ms ease;
-        }
-        *:focus {
-            background-color: rgba(221, 72, 20, .2);
-            outline: none;
-        }
-        html, body {
-            color: rgba(33, 37, 41, 1);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            font-size: 16px;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-        header {
-            background-color: rgba(247, 248, 249, 1);
-            padding: .4rem 0 0;
-        }
-        .menu {
-            padding: .4rem 2rem;
-        }
-        header ul {
-            border-bottom: 1px solid rgba(242, 242, 242, 1);
-            list-style-type: none;
-            margin: 0;
-            overflow: hidden;
-            padding: 0;
-            text-align: right;
-        }
-        header li {
-            display: inline-block;
-        }
-        header li a {
-            border-radius: 5px;
-            color: rgba(0, 0, 0, .5);
-            display: block;
-            height: 44px;
-            text-decoration: none;
-        }
-        header li.menu-item a {
-            border-radius: 5px;
-            margin: 5px 0;
-            height: 38px;
-            line-height: 36px;
-            padding: .4rem .65rem;
-            text-align: center;
-        }
-        header li.menu-item a:hover,
-        header li.menu-item a:focus {
-            background-color: rgba(221, 72, 20, .2);
-            color: rgba(221, 72, 20, 1);
-        }
-        header .logo {
-            float: left;
-            height: 44px;
-            padding: .4rem .5rem;
-        }
-        header .menu-toggle {
-            display: none;
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        header .menu-toggle button {
-            background-color: rgba(221, 72, 20, .6);
-            border: none;
-            border-radius: 3px;
-            color: rgba(255, 255, 255, 1);
-            cursor: pointer;
-            font: inherit;
-            font-size: 1.3rem;
-            height: 36px;
-            padding: 0;
-            margin: 11px 0;
-            overflow: visible;
-            width: 40px;
-        }
-        header .menu-toggle button:hover,
-        header .menu-toggle button:focus {
-            background-color: rgba(221, 72, 20, .8);
-            color: rgba(255, 255, 255, .8);
-        }
-        header .heroe {
-            margin: 0 auto;
-            max-width: 1100px;
-            padding: 1rem 1.75rem 1.75rem 1.75rem;
-        }
-        header .heroe h1 {
-            font-size: 2.5rem;
-            font-weight: 500;
-        }
-        header .heroe h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-        section {
-            margin: 0 auto;
-            max-width: 1100px;
-            padding: 2.5rem 1.75rem 3.5rem 1.75rem;
-        }
-        section h1 {
-            margin-bottom: 2.5rem;
-        }
-        section h2 {
-            font-size: 120%;
-            line-height: 2.5rem;
-            padding-top: 1.5rem;
-        }
-        section pre {
-            background-color: rgba(247, 248, 249, 1);
-            border: 1px solid rgba(242, 242, 242, 1);
-            display: block;
-            font-size: .9rem;
-            margin: 2rem 0;
-            padding: 1rem 1.5rem;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-        section code {
-            display: block;
-        }
-        section a {
-            color: rgba(221, 72, 20, 1);
-        }
-        section svg {
-            margin-bottom: -5px;
-            margin-right: 5px;
-            width: 25px;
-        }
-        .further {
-            background-color: rgba(247, 248, 249, 1);
-            border-bottom: 1px solid rgba(242, 242, 242, 1);
-            border-top: 1px solid rgba(242, 242, 242, 1);
-        }
-        .further h2:first-of-type {
-            padding-top: 0;
-        }
-        .svg-stroke {
-            fill: none;
-            stroke: #000;
-            stroke-width: 32px;
-        }
-        footer {
-            background-color: rgba(221, 72, 20, .8);
-            text-align: center;
-        }
-        footer .environment {
-            color: rgba(255, 255, 255, 1);
-            padding: 2rem 1.75rem;
-        }
-        footer .copyrights {
-            background-color: rgba(62, 62, 62, 1);
-            color: rgba(200, 200, 200, 1);
-            padding: .25rem 1.75rem;
-        }
-        @media (max-width: 629px) {
-            header ul {
-                padding: 0;
-            }
-            header .menu-toggle {
-                padding: 0 1rem;
-            }
-            header .menu-item {
-                background-color: rgba(244, 245, 246, 1);
-                border-top: 1px solid rgba(242, 242, 242, 1);
-                margin: 0 15px;
-                width: calc(100% - 30px);
-            }
-            header .menu-toggle {
-                display: block;
-            }
-            header .hidden {
-                display: none;
-            }
-            header li.menu-item a {
-                background-color: rgba(221, 72, 20, .1);
-            }
-            header li.menu-item a:hover,
-            header li.menu-item a:focus {
-                background-color: rgba(221, 72, 20, .7);
-                color: rgba(255, 255, 255, .8);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07091d">
+<meta name="description" content="PKLVERSE — platform digital untuk mengelola kegiatan Praktik Kerja Lapangan.">
+<title>PKLVERSE — Your Internship Universe</title>
+<style>
+:root{--bg:#07091d;--line:rgba(155,125,255,.38);--purple:#a855ff;--blue:#4ebdff;--text:#f7f5ff;--muted:#b9bddc}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 3% 12%,rgba(113,31,218,.35),transparent 30%),radial-gradient(ellipse at 80% 12%,rgba(20,94,225,.32),transparent 34%),radial-gradient(ellipse at 58% 70%,rgba(89,24,190,.18),transparent 38%),linear-gradient(120deg,#050719,#0a0d2b 58%,#07091c)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(2px 2px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 32% 8%,#a9b9ff,transparent),radial-gradient(2px 2px at 72% 18%,#fff,transparent),radial-gradient(1px 1px at 88% 47%,#d6baff,transparent),radial-gradient(2px 2px at 44% 70%,#fff,transparent);background-size:320px 240px}
+a{color:inherit;text-decoration:none}.navbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 6%;background:rgba(5,7,25,.82);border-bottom:1px solid rgba(159,132,255,.13);backdrop-filter:blur(18px)}
+.brand{font-size:24px;font-weight:900;font-style:italic;letter-spacing:.5px;white-space:nowrap}.brand span{color:#bc4bff}.nav-links,.nav-actions{display:flex;align-items:center;gap:9px}.nav-links{color:#e3e4fa;font-size:13px}.nav-links>a:not(.btn){padding:11px 14px;border-radius:30px}.nav-links>a:hover,.nav-links .active{background:rgba(105,50,235,.23);border:1px solid rgba(150,105,255,.35)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 22px;border-radius:30px;font-size:13px;font-weight:750;border:1px solid transparent;transition:.2s;white-space:nowrap}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(110deg,#812dff,#b44bff 65%,#38a9ff);box-shadow:0 0 24px rgba(132,53,255,.4);color:white}.btn-outline{border-color:rgba(165,117,255,.65);background:rgba(10,12,36,.65)}
+.hero{max-width:1600px;margin:auto;padding:58px 6% 30px;min-height:515px;display:grid;grid-template-columns:.88fr 1.12fr;align-items:center;gap:24px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid rgba(148,103,255,.4);border-radius:30px;background:rgba(76,39,161,.28);font-size:12px;margin-bottom:22px;box-shadow:0 0 20px rgba(104,55,255,.12)}.dot{width:7px;height:7px;border-radius:50%;background:#59dcff;box-shadow:0 0 12px #59dcff}
+h1{font-size:clamp(48px,5.5vw,82px);line-height:.98;letter-spacing:-2.7px;font-weight:900;font-style:italic;margin-bottom:18px}.gradient{background:linear-gradient(100deg,#a45bff 5%,#e94bff 48%,#6c9bff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-subtitle{font-size:clamp(23px,2.7vw,39px);font-weight:800;font-style:italic;line-height:1.15;margin-bottom:20px}.hero-copy{max-width:500px;color:#d0d2e9;font-size:16px;line-height:1.65;margin-bottom:25px}.hero-actions{display:flex;flex-wrap:wrap;gap:14px}.hero-actions .btn{padding:15px 26px}.hero-note{display:flex;align-items:center;gap:14px;margin-top:25px;color:#e2e3f8;font-size:13px}.avatars{display:flex;padding-left:4px}.avatar-mini{width:36px;height:36px;margin-left:-5px;border-radius:50%;display:grid;place-items:center;border:2px solid #171339;background:linear-gradient(135deg,#e6c6a9,#8274bc);font-size:16px}.hero-note strong{color:#b95cff}
+.dashboard-wrap{position:relative;padding:24px 0 28px}.dashboard{position:relative;z-index:2;border:1px solid rgba(153,115,255,.68);border-radius:27px;padding:16px;background:linear-gradient(145deg,rgba(23,25,68,.98),rgba(8,11,34,.98));box-shadow:0 0 55px rgba(95,47,230,.27),inset 0 0 25px rgba(105,75,255,.08);transform:perspective(1300px) rotateY(-5deg) rotateX(2deg)}
+.dash-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 6px 14px;border-bottom:1px solid rgba(255,255,255,.08)}.dash-logo{font-weight:900;font-size:12px;font-style:italic}.dash-logo span{color:#c55aff}.dash-user{display:flex;align-items:center;gap:9px;color:#d4d5ef;font-size:10px}.pill{padding:7px 9px;border-radius:20px;background:rgba(255,255,255,.06);font-size:10px}.user-circle{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f4d4b7,#8a85d8);font-size:15px}
+.dash-layout{display:grid;grid-template-columns:112px 1fr;gap:13px;padding-top:13px}.dash-side{padding:8px 0;border-right:1px solid rgba(255,255,255,.07)}.dash-side div{font-size:10px;color:#aeb3d9;padding:10px 8px;border-radius:8px;margin:3px 4px}.dash-side .selected{color:white;background:linear-gradient(100deg,#5222bd,#291779);border:1px solid rgba(171,115,255,.18)}.dash-main{min-width:0}.welcome{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.welcome h3{font-size:16px;line-height:1.3}.welcome p{font-size:10px;color:var(--muted);margin-top:5px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stat{padding:12px 10px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:linear-gradient(145deg,rgba(36,42,91,.9),rgba(21,24,61,.9));min-width:0}.stat small{display:block;font-size:10px;color:#d3d6f1}.stat strong{display:block;font-size:21px;margin:5px 0}.stat em{font-style:normal;color:#7be5c1;font-size:9px}.stat-icon{float:right;font-size:16px;color:#b78cff}
+.dash-lower{display:grid;grid-template-columns:1.1fr .9fr;gap:9px;margin-top:10px}.dash-box{padding:13px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(22,25,63,.85);min-width:0}.dash-box h4{font-size:11px;margin-bottom:11px}.activity{display:flex;gap:9px;align-items:flex-start;font-size:10px;color:#e0e1f7;margin:10px 0}.activity-icon{width:24px;height:24px;display:grid;place-items:center;flex:none;border-radius:7px;background:linear-gradient(135deg,#9e55ff,#437bff)}.activity small{display:block;color:#969dc5;font-size:9px;margin-top:4px}.progress-row{display:flex;align-items:center;gap:12px}.ring{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#23e2bd 0 78%,#28315d 78%);position:relative;flex:none}.ring:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#111638}.ring strong{z-index:1;font-size:16px}.progress-copy{font-size:10px;color:#c9ccec;line-height:1.7}.mini-chart{height:32px;margin-top:10px;display:flex;align-items:flex-end;gap:4px}.mini-chart i{display:block;flex:1;background:linear-gradient(#d34dff,#6434ef);border-radius:4px 4px 0 0}
+.callout{position:absolute;z-index:3;right:-5px;top:0;padding:13px 16px;border-radius:13px;border:1px solid #7e4cff;background:rgba(20,17,67,.96);box-shadow:0 0 22px rgba(109,57,255,.3);font-size:12px;line-height:1.6}.callout strong{color:#d7a4ff}.orbital-line{position:absolute;z-index:1;width:95%;height:60px;left:0;bottom:10px;border:3px solid rgba(141,71,255,.7);border-radius:50%;transform:rotate(-13deg);filter:drop-shadow(0 0 8px #7c3dff);pointer-events:none}
+.feature-strip{max-width:1450px;margin:0 auto 35px;padding:0 6%}.strip-inner{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:17px 15px;border:1px solid rgba(157,120,255,.72);border-radius:20px;background:linear-gradient(100deg,rgba(35,24,94,.94),rgba(14,19,57,.96),rgba(22,40,92,.92));box-shadow:0 0 32px rgba(89,45,218,.18)}.strip-item{display:flex;align-items:center;justify-content:center;gap:12px;padding:5px 12px;border-right:1px solid rgba(255,255,255,.1)}.strip-item:last-child{border-right:0}.strip-icon{font-size:27px;color:#c88aff;text-shadow:0 0 15px #9e4fff}.strip-item strong{display:block;font-size:12px;margin-bottom:5px}.strip-item small{display:block;font-size:10px;color:#c3c7e5;line-height:1.4}
+section.content-section{max-width:1500px;margin:auto;padding:65px 6% 75px}.section-head{max-width:650px;margin:0 auto 35px;text-align:center}.section-label{color:#c49aff;font-size:11px;font-weight:850;letter-spacing:2px;margin-bottom:13px}h2{font-size:clamp(29px,3.5vw,43px);letter-spacing:-1px;margin-bottom:13px}.section-head p{color:var(--muted);line-height:1.8;font-size:14px}.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.feature{padding:25px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(24,28,73,.9),rgba(10,14,38,.92));transition:.25s}.feature:hover{transform:translateY(-4px);border-color:#a77aff;box-shadow:0 12px 30px rgba(88,42,194,.16)}.feature-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(141,91,255,.16);font-size:23px;margin-bottom:18px;color:#d5a3ff}.feature h3{font-size:16px;margin-bottom:9px}.feature p{color:var(--muted);line-height:1.75;font-size:13px}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.member{text-align:center;padding:25px 16px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(24,28,73,.9),rgba(10,14,38,.92))}.member-avatar{width:68px;height:68px;margin:0 auto 15px;display:grid;place-items:center;border-radius:22px;background:linear-gradient(135deg,rgba(169,154,255,.28),rgba(112,184,255,.18));border:1px solid rgba(169,154,255,.35);font-size:26px;color:#e1caff}.member h3{font-size:14px;margin-bottom:6px}.member p{font-size:12px;color:var(--muted)}
+.cta{margin:15px 6% 75px;padding:48px 25px;border:1px solid var(--line);border-radius:24px;text-align:center;background:radial-gradient(ellipse at top,rgba(104,55,232,.25),transparent 65%),#10142a}.cta p{color:var(--muted);margin:0 auto 23px;line-height:1.8;max-width:550px;font-size:14px}footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:23px 6%;border-top:1px solid rgba(255,255,255,.08);color:#858bb2;font-size:12px}
+@media(max-width:1100px){.navbar{padding:14px 4%}.nav-links{gap:1px}.nav-links>a:not(.btn){padding:10px}.hero{grid-template-columns:1fr;padding-top:55px}.hero-copy{max-width:650px}.dashboard-wrap{width:min(100%,760px);margin:0 auto}.features{grid-template-columns:repeat(2,minmax(0,1fr))}.strip-inner{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.strip-item{border-right:0}.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.navbar{flex-wrap:wrap;gap:12px}.brand{font-size:21px}.nav-links{order:3;width:100%;justify-content:center}.nav-links>a:not(.btn){padding:8px 10px}.nav-actions{margin-left:auto}.hero{padding:48px 5% 25px;gap:22px}.hero-copy{font-size:14px}h1{font-size:51px;letter-spacing:-1.7px}.hero-subtitle{font-size:25px}.hero-actions .btn{padding:13px 17px}.hero-note{font-size:11px}.dashboard{padding:10px;transform:none;border-radius:17px}.dash-layout{grid-template-columns:1fr}.dash-side{display:none}.dash-head{align-items:flex-start}.dash-user .pill{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat strong{font-size:19px}.dash-lower{grid-template-columns:1fr}.dash-lower .dash-box:last-child{display:none}.callout{right:-3px;top:-10px;font-size:10px;padding:9px}.feature-strip{padding:0 5%;margin-bottom:20px}.strip-inner{grid-template-columns:1fr 1fr;padding:12px 8px}.strip-item{justify-content:flex-start;padding:10px 8px}.strip-item:last-child{grid-column:1/-1}.strip-icon{font-size:22px}.strip-item strong{font-size:11px}.strip-item small{font-size:9px}.features,.team-grid{grid-template-columns:1fr}section.content-section{padding:50px 5%}.cta{margin:10px 5% 55px;padding:38px 18px}footer{padding:22px 5%}}
+</style>
 </head>
 <body>
-
-<!-- HEADER: MENU + HEROE SECTION -->
-<header>
-
-    <div class="menu">
-        <ul>
-            <li class="logo">
-                <a href="https://codeigniter.com" target="_blank">
-                    <svg role="img" aria-label="Visit CodeIgniter.com official website!" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 500" height="44"><path fill="#dd4814" d="M148.2 411c-20.53-9.07-34.48-28.61-36.31-50.99 1.2-23.02 13.36-44.06 32.67-56.61-3.17 7.73-2.4 16.53 2 23.6 5.01 7 13.63 10.36 22.07 8.61 12.02-3.38 19.06-15.86 15.68-27.89-1.2-4.21-3.6-8.03-6.88-10.91-13.6-11.06-20.43-28.44-18-45.81 2.33-9.2 7.42-17.52 14.61-23.8-5.4 14.4 9.83 28.61 20.05 35.6 18.14 10.88 35.6 22.84 52.32 35.81 18.27 14.4 28.23 36.94 26.67 60-4.11 24.54-21.47 44.8-45.13 52.4 47.33-10.53 96.13-48.13 97.06-101.46-.93-42.67-26.4-80.96-65.33-98.4h-1.73c.86 2.09 1.28 4.34 1.2 6.61.13-1.47.13-2.93 0-4.4.21 1.73.21 3.47 0 5.2-2.96 12.13-15.2 19.6-27.36 16.64-4.86-1.2-9.2-3.93-12.32-7.87-15.6-20 0-42.76 2.61-64.76 1.6-28.13-11.25-55.02-34.05-71.46 11.41 19.02-3.79 44-14.84 58.21-11.07 14.21-27.07 24.8-40.11 37.2-14.05 13.07-26.93 27.44-38.49 42.8-24.99 30.53-34.8 70.8-26.67 109.4 11.15 37.2 42.07 65.15 80.2 72.4h.21l-.13-.12Zm324.56-159.8q0-17.92 6.16-35.56 6.44-17.92 18.48-31.92t29.68-22.68q17.64-8.96 40.04-8.96 26.6 0 45.36 12.04 19.04 12.04 28 31.36l-15.4 9.52q-4.76-9.8-11.76-16.52-6.72-6.72-14.56-10.92-7.84-4.2-16.24-5.88-8.4-1.96-16.52-1.96-17.92 0-31.64 7.28-13.72 7.28-23.24 19.04-9.24 11.76-14 26.6-4.76 14.56-4.76 29.68 0 16.52 5.6 31.64 5.88 15.12 15.68 26.88 10.08 11.48 23.52 18.48 13.72 6.72 29.68 6.72 8.4 0 17.08-1.96 8.96-2.24 17.08-6.72 8.4-4.76 15.4-11.48 7-7 11.76-16.8l16.24 8.4q-4.76 11.2-13.44 19.88-8.68 8.4-19.32 14.28-10.64 5.88-22.68 8.96-11.76 3.08-23.24 3.08-20.44 0-37.52-8.96-17.08-8.96-29.4-23.24-12.32-14.56-19.32-32.76-6.72-18.48-6.72-37.52Zm263.48 103.6q-15.96 0-29.12-5.88-13.16-6.16-22.96-16.52-9.52-10.36-14.84-24.08Q664 294.6 664 279.48q0-15.4 5.32-29.12 5.6-13.72 15.12-24.08 9.8-10.36 22.96-16.52t28.84-6.16q15.68 0 28.84 6.16 13.44 6.16 22.96 16.52 9.8 10.36 15.12 24.08 5.6 13.72 5.6 29.12 0 15.12-5.32 28.84t-15.12 24.08q-9.52 10.36-22.96 16.52-13.16 5.88-29.12 5.88Zm-52.92-75.04q0 12.32 4.2 22.96 4.2 10.36 11.2 18.48 7.28 7.84 16.8 12.32 9.8 4.48 20.72 4.48 10.92 0 20.44-4.48 9.8-4.76 17.08-12.6 7.28-8.12 11.48-18.76 4.2-10.64 4.2-22.96 0-12.04-4.2-22.68-4.2-10.92-11.48-18.76-7.28-8.12-17.08-12.6-9.52-4.76-20.44-4.76-10.92 0-20.44 4.76-9.52 4.48-16.8 12.6-7.28 8.12-11.48 19.04-4.2 10.64-4.2 22.96ZM900.6 354.8q-15.12 0-28-6.16-12.88-6.44-22.12-16.8t-14.56-23.8q-5.04-13.72-5.04-28.56 0-15.4 5.04-29.12 5.04-14 13.72-24.36 8.96-10.36 21-16.24 12.32-6.16 26.88-6.16 18.48 0 32.76 9.8 14.28 9.52 22.4 23.24V147.6h19.04v179.76q0 7.84 6.72 7.84V352q-4.2.84-6.72.84-6.72 0-11.76-4.2-5.04-4.48-5.04-10.64v-14.28Q946.24 338 931.4 346.4t-30.8 8.4Zm4.2-16.8q7 0 14.84-2.8 8.12-2.8 15.12-7.56 7-5.04 11.76-11.48 5.04-6.72 6.16-14.28V256.8q-2.8-7.56-8.12-14-5.32-6.72-12.32-11.76-6.72-5.04-14.56-7.84-7.84-2.8-15.4-2.8-11.76 0-21.28 5.04-9.52 5.04-16.52 13.44-6.72 8.12-10.36 18.76-3.64 10.64-3.64 21.84 0 11.76 4.2 22.4 4.2 10.64 11.48 18.76 7.28 7.84 17.08 12.6Q893.32 338 904.8 338Zm173.04 16.8q-15.96 0-29.4-5.88-13.16-6.16-22.96-16.52-9.8-10.64-15.4-24.36-5.32-13.72-5.32-29.4 0-15.4 5.32-28.84 5.6-13.72 15.12-23.8 9.8-10.36 23.24-16.24 13.44-6.16 29.12-6.16 15.96 0 29.12 6.16 13.44 5.88 22.96 16.24 9.52 10.36 14.84 23.8 5.32 13.44 5.32 28.56v4.48q0 2.24-.28 3.08h-124.88q.84 11.76 5.32 21.84 4.76 9.8 12.04 17.08 7.28 7.28 16.52 11.48 9.52 3.92 20.16 3.92 7 0 14-1.96t12.88-5.32q5.88-3.36 10.64-8.12 4.76-5.04 7.28-10.92l16.52 4.48q-3.36 8.12-9.52 14.84-6.16 6.44-14.28 11.48-8.12 4.76-17.92 7.56-9.8 2.52-20.44 2.52Zm-53.48-83.44h107.24q-.84-11.76-5.6-21.28-4.48-9.8-11.76-16.8-7-7-16.52-10.92-9.24-3.92-19.88-3.92-10.64 0-20.16 3.92t-16.8 10.92q-7 7-11.48 16.8-4.2 9.8-5.04 21.28Zm193.2 80.64h-38.64V153.2h38.64V352Zm93.52.84q-14.84 0-26.88-5.88t-21-15.96q-8.68-10.36-13.44-23.8-4.76-13.44-4.76-28.56 0-15.96 5.04-29.68 5.04-13.72 14-24.08 8.96-10.36 21.56-16.24 12.6-5.88 27.72-5.88 17.08 0 29.96 7.84 12.88 7.56 21.28 20.44v-25.76h32.76V345q0 16.24-6.16 29.12-6.16 12.88-17.08 21.84-10.64 8.96-25.76 13.72-14.84 4.76-32.48 4.76-24.08 0-40.6-7.84-16.24-8.12-28-22.68l20.44-19.88q8.4 10.36 21 16.24 12.88 5.88 27.16 5.88 8.68 0 16.52-2.24 8.12-2.52 14.28-7.56 6.16-5.04 9.52-12.88 3.64-7.84 3.64-18.48v-18.48q-7.28 12.6-20.44 19.6-13.16 6.72-28.28 6.72Zm12.6-29.96q6.16 0 11.76-1.96t10.36-5.32q4.76-3.36 8.4-7.84 3.64-4.48 5.6-9.52v-35q-5.04-12.88-15.96-20.72-10.64-7.84-22.4-7.84-8.68 0-15.68 3.92-7 3.64-12.04 10.08-5.04 6.16-7.84 14.28-2.52 8.12-2.52 16.8 0 8.96 3.08 16.8t8.4 13.72q5.6 5.88 12.88 9.24 7.28 3.36 15.96 3.36Zm243.88-62.44V352h-37.52v-82.32q0-17.64-6.16-25.76-6.16-8.12-17.08-8.12-5.6 0-11.48 2.24-5.88 2.24-11.2 6.44-5.04 3.92-9.24 9.52t-6.16 12.32V352h-37.52V205.28h33.88v27.16q8.12-14 23.52-21.84t34.72-7.84q13.72 0 22.4 5.04 8.68 5.04 13.44 13.16 4.76 8.12 6.44 18.48 1.96 10.36 1.96 21Zm70.28 91.56h-37.52V205.28h37.52V352Zm0-167.16h-37.52V147.6h37.52v37.24Zm114.24 129.92 7.56 29.68q-7.56 3.36-18.48 6.72-10.92 3.36-22.96 3.36-7.84 0-14.84-1.96-6.72-1.96-12.04-6.16-5.04-4.48-8.12-11.2-3.08-7-3.08-16.8v-84.28h-19.32v-28.84h19.32v-47.6h37.52v47.6h30.8v28.84h-30.8v71.68q0 7.84 3.92 11.2 4.2 3.08 10.08 3.08t11.48-1.96q5.6-1.96 8.96-3.36Zm91.56 40.04q-17.64 0-31.92-5.88-14.28-6.16-24.36-16.52t-15.68-24.08q-5.32-13.72-5.32-28.84 0-15.68 5.32-29.4 5.32-14 15.4-24.36 10.08-10.64 24.36-16.8 14.56-6.16 32.48-6.16 17.92 0 31.92 6.16 14.28 6.16 24.08 16.52 10.08 10.36 15.12 24.08 5.32 13.72 5.32 28.56 0 3.64-.28 7 0 3.36-.56 5.6h-113.4q.84 8.68 4.2 15.4 3.36 6.72 8.68 11.48 5.32 4.76 12.04 7.28 6.72 2.52 14 2.52 11.2 0 21-5.32 10.08-5.6 13.72-14.56l32.2 8.96q-8.12 16.8-26.04 27.72-17.64 10.64-42.28 10.64Zm-38.08-88.48h76.16q-1.4-16.52-12.32-26.32-10.64-10.08-26.04-10.08-7.56 0-14.28 2.8-6.44 2.52-11.48 7.28t-8.4 11.48q-3.08 6.72-3.64 14.84Zm225.12-62.72v34.16q-17.08.28-30.52 6.72-13.44 6.16-19.32 18.76V352h-37.52V205.28h34.44v31.36q3.92-7.56 9.24-13.44 5.32-6.16 11.48-10.64t12.32-6.72q6.44-2.52 12.32-2.52h4.48q1.68 0 3.08.28Z"/></svg>
-                </a>
-            </li>
-            <li class="menu-toggle">
-                <button id="menuToggle">&#9776;</button>
-            </li>
-            <li class="menu-item hidden"><a href="#">Home</a></li>
-            <li class="menu-item hidden"><a href="https://codeigniter.com/user_guide/" target="_blank">Docs</a>
-            </li>
-            <li class="menu-item hidden"><a href="https://forum.codeigniter.com/" target="_blank">Community</a></li>
-            <li class="menu-item hidden"><a
-                    href="https://codeigniter.com/contribute" target="_blank">Contribute</a>
-            </li>
-        </ul>
+<nav class="navbar">
+  <a href="<?= site_url('/') ?>" class="brand">🪐 PKL<span>VERSE</span></a>
+  <div class="nav-links"><a href="<?= site_url('/') ?>" class="active">⌂ Beranda</a><a href="#fitur">▦ Fitur</a><a href="#tentang">▣ Tentang</a><a href="#faq">ⓘ FAQ</a></div>
+  <div class="nav-actions">
+    <?php if (session()->get('logged_in')): ?><a class="btn btn-outline" href="<?= site_url('dashboard') ?>">Dashboard</a><?php else: ?><a class="btn btn-outline" href="<?= site_url('login') ?>">Login</a><a class="btn btn-primary" href="<?= site_url('login') ?>">🚀 Daftar</a><?php endif; ?>
+  </div>
+</nav>
+<main>
+<section class="hero" id="tentang">
+  <div>
+    <div class="eyebrow">🚀 Platform PKL Terpadu <span class="dot"></span></div>
+    <h1>PKL<span class="gradient">VERSE</span></h1>
+    <div class="hero-subtitle">Your Internship <span class="gradient">Universe</span></div>
+    <p class="hero-copy">Kelola Praktik Kerja Lapangan dengan lebih mudah, modern, dan terstruktur dalam satu platform digital berbasis teknologi masa depan.</p>
+    <div class="hero-actions"><?php if (session()->get('logged_in')): ?><a href="<?= site_url('dashboard') ?>" class="btn btn-primary">Mulai Sekarang →</a><?php else: ?><a href="<?= site_url('login') ?>" class="btn btn-primary">Mulai Sekarang →</a><?php endif; ?><a href="#fitur" class="btn btn-outline">▷ Lihat Fitur</a></div>
+    <div class="hero-note"><div class="avatars"><span class="avatar-mini">👨🏻‍💻</span><span class="avatar-mini">👩🏻‍💻</span><span class="avatar-mini">🧑🏻‍💻</span><span class="avatar-mini">👨🏽‍💻</span></div><div><strong>+10K</strong> pengguna<br>sudah bergabung</div></div>
+  </div>
+  <div class="dashboard-wrap">
+    <div class="dashboard">
+      <div class="dash-head"><div class="dash-logo">🪐 PKL<span>VERSE</span></div><div class="dash-user"><span class="pill">▣ Selasa, 27 Mei 2025</span><span>🔔</span><span class="user-circle">👨🏻</span></div></div>
+      <div class="dash-layout">
+        <aside class="dash-side"><div class="selected">▣ Dashboard</div><div>☷ Tugas</div><div>▧ Jurnal</div><div>◉ Presensi</div><div>▣ Chatroom</div><div>✧ AI Assistant</div><div>⚙ Pengaturan</div><div style="margin-top:24px">⇥ Logout</div></aside>
+        <div class="dash-main">
+          <div class="welcome"><div><h3>Selamat datang,<br>Administrator! 👋</h3><p>Terus semangat dalam menjalani PKL!</p></div></div>
+          <div class="stats">
+            <div class="stat"><span class="stat-icon">✓</span><small>Tugas</small><strong>12</strong><em>↗ 2 dari kemarin</em></div><div class="stat"><span class="stat-icon">▤</span><small>Jurnal</small><strong>8</strong><em>↗ 1 dari kemarin</em></div><div class="stat"><span class="stat-icon">▥</span><small>Presensi</small><strong>95%</strong><em>↗ 1% dari kemarin</em></div><div class="stat"><span class="stat-icon">♧</span><small>Notifikasi</small><strong>3</strong><em style="color:#c2c5e5">Belum dibaca</em></div>
+          </div>
+          <div class="dash-lower">
+            <div class="dash-box"><h4>Aktivitas Terbaru</h4><div class="activity"><span class="activity-icon">▧</span><div>Jurnal harian baru telah ditambahkan<small>2 jam yang lalu</small></div></div><div class="activity"><span class="activity-icon">☑</span><div>Tugas “Pengembangan Sistem” diperbarui<small>3 jam yang lalu</small></div></div><div class="activity"><span class="activity-icon">✓</span><div>Presensi hari ini berhasil dicatat<small>4 jam yang lalu</small></div></div></div>
+            <div class="dash-box"><h4>Progress PKL</h4><div class="progress-row"><div class="ring"><strong>78%</strong></div><div class="progress-copy">Menuju kelulusan<br>Tetap semangat! 🚀</div></div><div class="mini-chart"><i style="height:30%"></i><i style="height:50%"></i><i style="height:38%"></i><i style="height:65%"></i><i style="height:47%"></i><i style="height:82%"></i><i style="height:65%"></i><i style="height:95%"></i></div></div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="heroe">
-
-        <h1>Welcome to CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></h1>
-
-        <h2>The small framework with powerful features</h2>
-
-    </div>
-
-</header>
-
-<!-- CONTENT -->
-
-<section>
-
-    <h1>About this page</h1>
-
-    <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-    <p>If you would like to edit this page you will find it located at:</p>
-
-    <pre><code>app/Views/welcome_message.php</code></pre>
-
-    <p>The corresponding controller for this page can be found at:</p>
-
-    <pre><code>app/Controllers/Home.php</code></pre>
-
+    <div class="callout">📈 <strong>Lebih Produktif<br>Lebih Terorganisir</strong></div><div class="orbital-line"></div>
+  </div>
 </section>
-
-<div class="further">
-
-    <section>
-
-        <h1>Go further</h1>
-
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect x='32' y='96' width='64' height='368' rx='16' ry='16' class="svg-stroke" /><line x1='112' y1='224' x2='240' y2='224' class="svg-stroke" /><line x1='112' y1='400' x2='240' y2='400' class="svg-stroke" /><rect x='112' y='160' width='128' height='304' rx='16' ry='16' class="svg-stroke" /><rect x='256' y='48' width='96' height='416' rx='16' ry='16' class="svg-stroke" /><path d='M422.46,96.11l-40.4,4.25c-11.12,1.17-19.18,11.57-17.93,23.1l34.92,321.59c1.26,11.53,11.37,20,22.49,18.84l40.4-4.25c11.12-1.17,19.18-11.57,17.93-23.1L445,115C443.69,103.42,433.58,94.94,422.46,96.11Z' class="svg-stroke"/></svg>
-            Learn
-        </h2>
-
-        <p>The User Guide contains an introduction, tutorial, a number of "how to"
-            guides, and then reference documentation for the components that make up
-            the framework. Check the <a href="https://codeigniter.com/user_guide/"
-            target="_blank">User Guide</a> !</p>
-
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M431,320.6c-1-3.6,1.2-8.6,3.3-12.2a33.68,33.68,0,0,1,2.1-3.1A162,162,0,0,0,464,215c.3-92.2-77.5-167-173.7-167C206.4,48,136.4,105.1,120,180.9a160.7,160.7,0,0,0-3.7,34.2c0,92.3,74.8,169.1,171,169.1,15.3,0,35.9-4.6,47.2-7.7s22.5-7.2,25.4-8.3a26.44,26.44,0,0,1,9.3-1.7,26,26,0,0,1,10.1,2L436,388.6a13.52,13.52,0,0,0,3.9,1,8,8,0,0,0,8-8,12.85,12.85,0,0,0-.5-2.7Z' class="svg-stroke" /><path d='M66.46,232a146.23,146.23,0,0,0,6.39,152.67c2.31,3.49,3.61,6.19,3.21,8s-11.93,61.87-11.93,61.87a8,8,0,0,0,2.71,7.68A8.17,8.17,0,0,0,72,464a7.26,7.26,0,0,0,2.91-.6l56.21-22a15.7,15.7,0,0,1,12,.2c18.94,7.38,39.88,12,60.83,12A159.21,159.21,0,0,0,284,432.11' class="svg-stroke" /></svg>
-            Discuss
-        </h2>
-
-        <p>CodeIgniter is a community-developed open source project, with several
-             venues for the community members to gather and exchange ideas. View all
-             the threads on <a href="https://forum.codeigniter.com/"
-             target="_blank">CodeIgniter's forum</a>, or <a href="https://join.slack.com/t/codeigniterchat/shared_invite/zt-rl30zw00-obL1Hr1q1ATvkzVkFp8S0Q"
-             target="_blank">chat on Slack</a> !</p>
-
-        <h2>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><line x1='176' y1='48' x2='336' y2='48' class="svg-stroke" /><line x1='118' y1='304' x2='394' y2='304' class="svg-stroke" /><path d='M208,48v93.48a64.09,64.09,0,0,1-9.88,34.18L73.21,373.49C48.4,412.78,76.63,464,123.08,464H388.92c46.45,0,74.68-51.22,49.87-90.51L313.87,175.66A64.09,64.09,0,0,1,304,141.48V48' class="svg-stroke" /></svg>
-             Contribute
-        </h2>
-
-        <p>CodeIgniter is a community driven project and accepts contributions
-             of code and documentation from the community. Why not
-             <a href="https://codeigniter.com/contribute" target="_blank">
-             join us</a> ?</p>
-
-    </section>
-
-</div>
-
-<!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
-
-<footer>
-    <div class="environment">
-
-        <p>Page rendered in {elapsed_time} seconds using {memory_usage} MB of memory.</p>
-
-        <p>Environment: <?= ENVIRONMENT ?></p>
-
-    </div>
-
-    <div class="copyrights">
-
-        <p>&copy; <?= date('Y') ?> CodeIgniter Foundation. CodeIgniter is open source project released under the MIT
-            open source licence.</p>
-
-    </div>
-
-</footer>
-
-<!-- SCRIPTS -->
-
-<script {csp-script-nonce}>
-    document.getElementById("menuToggle").addEventListener('click', toggleMenu);
-    function toggleMenu() {
-        var menuItems = document.getElementsByClassName('menu-item');
-        for (var i = 0; i < menuItems.length; i++) {
-            var menuItem = menuItems[i];
-            menuItem.classList.toggle("hidden");
-        }
-    }
-</script>
-
-<!-- -->
-
+<div class="feature-strip"><div class="strip-inner">
+  <div class="strip-item"><span class="strip-icon">ϟ</span><div><strong>Manajemen Tugas</strong><small>Atur & pantau tugas PKL<br>secara efisien</small></div></div>
+  <div class="strip-item"><span class="strip-icon">♧</span><div><strong>Jurnal Digital</strong><small>Catat aktivitas harian<br>dengan mudah</small></div></div>
+  <div class="strip-item"><span class="strip-icon">♟</span><div><strong>Sistem Presensi</strong><small>Tracking kehadiran<br>secara real-time</small></div></div>
+  <div class="strip-item"><span class="strip-icon">▣</span><div><strong>Chatroom</strong><small>Diskusi dengan tim &<br>pembimbing</small></div></div>
+  <div class="strip-item"><span class="strip-icon">✧</span><div><strong>AI Assistant</strong><small>Dapatkan bantuan cerdas<br>untuk PKL-mu</small></div></div>
+</div></div>
+<section class="content-section" id="fitur">
+  <div class="section-head"><div class="section-label">⭐ FITUR UNGGULAN</div><h2>Teknologi Terbaik<br><span class="gradient">untuk Perjalanan PKL-mu</span></h2><p>Dilengkapi fitur modern yang siap mendukung setiap langkah perjalanan PKL kamu.</p></div>
+  <div class="features">
+    <article class="feature"><div class="feature-icon">▣</div><h3>Task Planner</h3><p>Kelola tugas dengan sistem prioritas yang cerdas, tenggat waktu, dan status pekerjaan.</p></article>
+    <article class="feature"><div class="feature-icon">✺</div><h3>AI Assistant</h3><p>Asisten digital untuk ide, rekomendasi, dan bantuan menyelesaikan pekerjaan PKL.</p></article>
+    <article class="feature"><div class="feature-icon">▥</div><h3>Progress Tracker</h3><p>Pantau perkembangan PKL secara terstruktur agar target lebih mudah dicapai.</p></article>
+    <article class="feature"><div class="feature-icon">▧</div><h3>Jurnal Kegiatan</h3><p>Dokumentasikan kegiatan harian dan lampiran sebagai catatan aktivitas PKL.</p></article>
+    <article class="feature"><div class="feature-icon">◉</div><h3>Sistem Presentasi</h3><p>Siapkan materi presentasi, ajukan peninjauan, dan catat masukan pembimbing.</p></article>
+    <article class="feature"><div class="feature-icon">⌘</div><h3>Chatroom</h3><p>Berkomunikasi dengan anggota kelompok dan pembimbing dalam ruang diskusi.</p></article>
+  </div>
+</section>
+<section class="content-section" id="tim">
+  <div class="section-head"><div class="section-label">TIM PENGEMBANG</div><h2>Kenalan dengan<br><span class="gradient">tim PKLVERSE.</span></h2><p>Empat anggota tim, satu tujuan untuk menghadirkan pengalaman PKL yang lebih baik.</p></div>
+  <div class="team-grid"><article class="member"><div class="member-avatar">✦</div><h3>Nama Anggota 1</h3><p>Project Lead</p></article><article class="member"><div class="member-avatar">✧</div><h3>Nama Anggota 2</h3><p>UI/UX Designer</p></article><article class="member"><div class="member-avatar">⌘</div><h3>Nama Anggota 3</h3><p>Developer</p></article><article class="member"><div class="member-avatar">✺</div><h3>Nama Anggota 4</h3><p>Documentation</p></article></div>
+</section>
+<section class="content-section" id="faq"><div class="section-head"><div class="section-label">MULAI DENGAN MUDAH</div><h2>Siap mengelola PKL<br><span class="gradient">dengan cara baru?</span></h2><p>Masuk ke PKLVERSE untuk mulai mengatur tugas, jurnal, komunikasi, dan perkembangan kegiatanmu.</p><a href="<?= site_url('login') ?>" class="btn btn-primary">Masuk ke PKLVERSE →</a></div></section>
+</main>
+<footer><a href="<?= site_url('/') ?>" class="brand">PKL<span>VERSE</span></a><p>© <?= date('Y') ?> PKLVERSE. Your internship, your universe.</p></footer>
 </body>
 </html>
